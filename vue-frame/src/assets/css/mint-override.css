@@ -1,0 +1,28 @@
+.mint-tab-item {
+    color: #000;
+  }
+  .mint-navbar.is-fixed {
+    z-index: 16;
+  }
+
+  .mint-msgbox-message{
+      color:#000 !important;
+      font-size: 1.2rem;
+  }
+
+  .mint-msgbox-btn{      
+    background: linear-gradient(to right, #188bd4, #5cd5fd);
+    background: -o-linear-gradient(to right, #188bd4, #5cd5fd);
+    background: -moz-linear-gradient(to right, #188bd4, #5cd5fd);
+    background: -webkit-linear-gradient(to right, #188bd4, #5cd5fd);
+  }
+  .mint-msgbox-confirm{
+      color: #fff;
+      font-size:1.1rem;
+  }
+  .mint-msgbox-content{
+      padding: 25px;
+  }
+  .mint-msgbox-cancel{
+      color:#000 !important;
+  }
