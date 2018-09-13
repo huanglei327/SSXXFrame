@@ -8,26 +8,28 @@ import axios from 'axios'
 axios.defaults.timeout = 1000 * 60;
 axios.defaults.withCredentials = false
 
-axios.defaults.baseURL = `http://merit.dsunyun.com/`
+//axios.defaults.baseURL = `http://duoduoday.top`
 //axios.defaults.baseURL = 'api'
-//axios.defaults.baseURL = ''
+axios.defaults.baseURL = 'http://localhost:62294/'
 // http request 拦截器
 axios.interceptors.request.use(
     config => {
-        
+        var obj = JSON.parse(localStorage.getItem("UserInfo"))
+        if (obj !== null) {
+            config.url = config.url + '?userid=' + obj.userid + '&token=' + obj.token + '&openid=' + obj.openid
+        }
         return config;
     },
     err => {
-         
+
         return Promise.reject(err);
     });
 
 // http response 拦截器
 axios.interceptors.response.use(
     response => {
-        
-        if (response.data.errorCode !== 0) {
-            
+        if (response.errorCode !== 0) {
+           
         }
         return response;
     },

@@ -21,7 +21,6 @@ Vue.use(Button).use(Collapse).use(CollapseItem).use(Cell).use(CellGroup).use(
 Vue.config.productionTip = false
 Vue.prototype.$checkVal = validate_
 Vue.prototype.$common = common_
-Toast.allowMultiple()
 router.beforeEach((to, from, next) => {
   next()
 })
