@@ -1,13 +1,18 @@
 import axios from './axoisPlus'
 import qs from 'qs'
+import { Toast } from 'vant';
 
 export function post(apiname, parameters) {
     return new Promise((resolve, reject) => {
         axios.post(apiname, qs.stringify(parameters))
             .then(res => {
-                resolve(res.data);
+                if (res.data.errorCode !== 0) {
+                    Toast.clear()
+                    Toast.fail(res.data.errorMessage)
+                } else {
+                    resolve(res.data)
+                }
             }).catch(err => {
-                console.log(err);
                 reject(err)
             })
     })

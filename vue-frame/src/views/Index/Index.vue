@@ -38,33 +38,41 @@ export default {
     },
     mounted() {
         const that = this
-        that.setCookie()
-        //that.getCookie("UserInfo")
-        that.$toast('提示文案');
-        that.getUserInfo().then(() => {
-            console.log('000')
-            return that.getUserInfo1()
-        }).then(() => {
-            return that.getUserInfo2()
-        }).catch(function (reason) {
-            console.log('rejected');
-            console.log(reason);
+        //that.setCookie()
+        that.getCookie("UserInfo")
+        that.$toast.loading({
+            mask: true,
+            message: '加载中...',
+            duration: 0
         });
+        // that.getUserInfo()
+        // .then(() => {
+        //     return that.getUserInfo2()
+        // }).then(() => {
+        //     return that.getUserInfo1()
+        // }).catch(error => {
+        //     that.$toast.clear()
+        //     that.$toast.fail('失败文案')
+        // })
+        this.getUserInfo()
     },
     methods: {
         getUserInfo() {
             return new Promise((resolve, reject) => {
+                console.log('1')
                 const that = this
                 const param = {
-                    userid: 2,
+                    userid: that.$common.getUserInfo("userid"),
                 }
                 const c = res => {
+                    that.$toast.clear()
                     if (res.errorCode === 0) {
                         that.result = res.data
                         resolve();
                     }
                     else {
                         that.msg = JSON.stringify(res)
+                        reject()
                     }
                 }
                 getUserInfoApi(param).then(c)
@@ -72,9 +80,10 @@ export default {
         },
         getUserInfo1() {
             return new Promise((resolve, reject) => {
+                console.log('2')
                 const that = this
                 const param = {
-                    userid: 1,
+                    userid: 3,
                 }
                 const c = res => {
                     if (res.errorCode === 0) {
@@ -90,9 +99,10 @@ export default {
         },
         getUserInfo2() {
             return new Promise((resolve, reject) => {
+                console.log('3')
                 const that = this
                 const param = {
-                    userid: 3,
+                    userid: 2,
                 }
                 const c = res => {
                     if (res.errorCode === 0) {
@@ -100,10 +110,13 @@ export default {
                         resolve();
                     }
                     else {
+                        reject(res.errorMessage);
                         that.msg = JSON.stringify(res)
                     }
                 }
-                getUserInfoApi(param).then(c)
+                setTimeout(() => {
+                    getUserInfoApi(param).then(c)
+                }, 3000);
             })
         },
         aa() {

@@ -12,14 +12,7 @@ body {
   font-size:14px;
   font-family:'Microsoft YaHei';
 }
-
-.pd5{
-  padding-top: 5px;
-}
-.div-btn {
-  width: 90%;
-  margin: 15px auto 10px auto;
-}
+ 
 .van-button--newlarge {
   width: 100%;
   height: 40px;
@@ -49,42 +42,9 @@ body {
   padding: 5px;
   text-align: center;
 }
-.font12{
-  font-size:12px;
+.van-modal{
+  background-color:rgba(0,0,0,.1)
 }
-.t-indet25{
-  text-indent: 25px;
-}
-.text-align-c{
-  text-align: center;
-}
-.padding15{
-  padding: 15px;
-}
-
-
-.index-hd {
-  padding: 40px;
-  text-align: center;
-}
-.index-bd {
-  padding: 0 15px 20px;
-}
-.index-ft {
-  padding-bottom: 10px;
-  text-align: center;
-}
-.index-logo {
-  width: 43px;
-  height: 43px;
-}
-.index-desc {
-  margin-top: 10px;
-  color: #888888;
-  font-size: 14px;
-}
-
-
 .navigator-box {
   opacity: 0;
   position: relative;
@@ -179,99 +139,13 @@ body {
   height: auto;
 }
 
-
-.text-align-l{
-  text-align: left;
-}
-.font12{
-  font-size:12px;
-}
-.font28{
-  font-size:28px;
-}
-.font14{
-  font-size:14px;
-}
-.padding-20{
-  padding: 20px;
-}
-.padding-10{
-  padding:10px;
-}
-.zwzx{
-  padding: 5px 0 10px 0;
-  color: #666;
-}
-
-.text-title{
-  height: 40px;
-  line-height: 40px;
-  background: #f5f5f5;
-  padding-left: 20px;
-}
-.up-img-ul {
-  padding-left: 10px;
-}
-.up-img-ul li {
-  float: left;
-  border: 1px solid #f5f5f5;
-  margin: 5px;
-  height: 90px;
-  width: 80px;
-  padding: 5px;
-  text-align: center;
-}
-.van-button--small{
-  min-width: 100px;
-}
-.van-button--primary{
-  color: #fff;
-  background-color: #FF7F00;
-  border: #FF7F00;
-}
+ 
 .errmsg {
 	width: 100%;
 	line-height: 24px;
 	padding-left: 90px;
 }
-.van-checkbox__icon--checked .van-icon{
-  color: #fff;
-    border-color: #FF7F00;
-    background-color:  #FF7F00;
-}
-.van-tab--active{
-  color:#FF7F00;
-}
-.van-tabs__line{
-  background: #FF7F00;
-}
-
-.bg-white{
-  background: white;
-}
-.alin-c{
-  text-align: center;
-}
-.font13{
-  font-size: 13px;
-  color: #666;
-}
-.d-c-title {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	.title {
-		font-size: 14px;
-		color: #666;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-		padding-right: 5px;
-	}
-	.status {
-		font-size: 12px;
-	}
-}
+ 
 .d-c-content {
 	line-height: 16px;
 	text-overflow: -o-ellipsis-lastline;
@@ -315,4 +189,8 @@ body {
   display: block;
     text-align: center;
     padding: 20px;
+}
+
+.van-toast--default .van-toast__text{
+  font-size: 12px;
 }

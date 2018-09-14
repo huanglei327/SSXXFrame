@@ -82,7 +82,7 @@ export function ckdate(starttime, endtime) {
 }
 
 export function getUserInfo(key) {
-    var userinfo = JSON.parse(localStorage.getItem("userInfo"))
+    var userinfo = JSON.parse(localStorage.getItem("UserInfo"))
     if (userinfo != null) {
         return userinfo[key]
     }

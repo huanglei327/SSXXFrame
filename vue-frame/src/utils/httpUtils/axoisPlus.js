@@ -4,6 +4,8 @@
 */
 
 import axios from 'axios'
+import { Toast } from 'vant';
+import router from '@/router'
 // axios 配置
 axios.defaults.timeout = 1000 * 60;
 axios.defaults.withCredentials = false
@@ -18,23 +20,19 @@ axios.interceptors.request.use(
         if (obj !== null) {
             config.url = config.url + '?userid=' + obj.userid + '&token=' + obj.token + '&openid=' + obj.openid
         }
-        return config;
+        return config
     },
     err => {
-
         return Promise.reject(err);
     });
 
 // http response 拦截器
 axios.interceptors.response.use(
     response => {
-        if (response.errorCode !== 0) {
-           
-        }
         return response;
     },
     err => {
-        //Indicator.close();
+        Toast.clear()
         if (err && err.response) {
             switch (err.response.status) {
                 case 400:
@@ -44,7 +42,6 @@ axios.interceptors.response.use(
                         duration: 5000
                     });
                     break
-
                 case 401:
                     Toast.fail({
                         message: '未授权，请登录(401)',
@@ -52,7 +49,6 @@ axios.interceptors.response.use(
                         duration: 5000
                     });
                     break
-
                 case 403:
                     Toast.fail({
                         message: '拒绝访问(403)',
@@ -60,7 +56,6 @@ axios.interceptors.response.use(
                         duration: 5000
                     });
                     break
-
                 case 404:
                     // Toast.fail({
                     //     message: `请求地址出错 ${err.response.config.url}`,
@@ -68,31 +63,27 @@ axios.interceptors.response.use(
                     //     duration: 5000
                     // });
                     break
-
                 case 408:
                     Toast.fail({
-                        message: '请求超时(408)',
+                        message: '请求超时',
                         position: 'bottom',
                         duration: 5000
                     });
                     break
-
                 case 500:
                     Toast.fail({
-                        message: '服务器内部错误(500)',
+                        message: '服务器内部错误',
                         position: 'bottom',
-                        duration: 5000
+                        duration: 10000
                     });
                     break
-
                 case 501:
                     Toast.fail({
-                        message: '服务未实现(501)',
+                        message: '服务未实现',
                         position: 'bottom',
                         duration: 5000
                     });
                     break
-
                 case 502:
                     Toast.fail({
                         message: '网关错误(502)',
@@ -100,15 +91,13 @@ axios.interceptors.response.use(
                         duration: 5000
                     });
                     break
-
                 case 503:
                     Toast.fail({
-                        message: '服务不可用(503)',
+                        message: '服务不可用',
                         position: 'bottom',
                         duration: 5000
                     });
                     break
-
                 case 504:
                     Toast.fail({
                         message: '网关超时(504)',
@@ -116,17 +105,20 @@ axios.interceptors.response.use(
                         duration: 5000
                     });
                     break
-
                 case 505:
                     Toast.fail({
-                        message: 'HTTP版本不受支持(505)',
+                        message: 'HTTP版本不受支持',
                         position: 'bottom',
                         duration: 5000
                     });
                     break
-
                 default:
             }
+        }
+        else {
+            router.push({
+                path: '/Error'
+            })
         }
 
         return Promise.reject(err)
